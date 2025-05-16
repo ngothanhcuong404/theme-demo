@@ -1,0 +1,80 @@
+{% schema %}
+{
+  "name": "Custom Header",
+  "settings": [],
+  "max_blocks": 5,
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Custom Header"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .custom-header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .site-title a {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+  }
+
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav li {
+    margin-left: 30px;
+  }
+
+  .main-nav li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .main-nav li a:hover {
+    color: #007ace;
+  }
+{% endstyle %}
+
+<header class="custom-header">
+  <div class="header-container">
+    <h1 class="site-title">
+      <a href="{{ shop.url }}">{{ shop.name }}</a>
+    </h1>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/collections/all">catalog</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/pages/about">About</a></li>
+            <li><a href="/pages/demo1">Demo1</a></li>
+            <li><a href="/pages/test">test liquid</a></li>
+               <li><a href="/pages/test-fillter-liquid">test liquid fillter</a></li>
+        <li><a href="/cart">Cart</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>

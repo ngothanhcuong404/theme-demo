@@ -1,0 +1,72 @@
+{% assign name = "cuong" %}
+{% assign title = "xin chào thế giới" %}
+{% assign html = "<p>Xin <strong>chào</strong></p>" %}
+{% assign mo_ta = "Đây là mô tả sản phẩm rất dài và chi tiết" %}
+{% assign colors = "đỏ,xanh,lá" | split: "," %}
+{% assign empty_value = "" %}
+{% assign number = 4.6 %}
+{% assign today = "2025-05-16" %}
+
+
+
+
+  <h2>1. upcase / downcase / capitalize:</h2>
+  {{ name | upcase }}<br>
+  {{ name | downcase }}<br>
+  {{ title | capitalize }}
+
+
+
+  <strong>2. replace / remove:</strong><br>
+  {{ title | replace: "thế giới", "bạn" }}<br>
+  {{ title | remove: "thế giới" }}
+
+
+
+  <h2>3. strip / strip_html:</h2>
+  {{ html | strip_html }}<br>
+  {{ "  Hello  " | strip }}
+
+
+
+  <h2>4. truncate:</h2>
+  {{ mo_ta | truncate: 30 }}
+
+
+
+  <h2>5. split / join:</h2>
+  {% for color in colors %}
+    - {{ color }}<br>
+  {% endfor %}
+  Kết nối: {{ colors | join: " | " }}
+
+
+
+  <h2>6. Tính toán:</h2>
+  10 + 5 = {{ 10 | plus: 5 }}<br>
+  10 - 3 = {{ 10 | minus: 3 }}<br>
+  4 * 2 = {{ 4 | times: 2 }}<br>
+  20 / 4 = {{ 20 | divided_by: 4 }}
+
+
+
+  <h2>7. Làm tròn số:</h2>
+  round(4.6) = {{ number | round }}<br>
+  ceil(4.6) = {{ number | ceil }}<br>
+  floor(4.6) = {{ number | floor }}
+  
+  <h2>8. default (giá trị mặc định):</h2>
+  {{ empty_value | default: "Chưa có dữ liệu" }}
+
+
+  <h2>9. size / first / last:</h2>
+  Số phần tử: {{ colors | size }}<br>
+  Đầu tiên: {{ colors | first }}<br>
+  Cuối cùng: {{ colors | last }}
+
+
+
+  <h2>10. date:</h2>
+  {{ today | date: "%d/%m/%Y" }}<br>
+  {{ "now" | date: "%H:%M %d-%m-%Y" }}
+

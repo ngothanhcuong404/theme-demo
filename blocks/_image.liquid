@@ -1,0 +1,81 @@
+{% stylesheet %}
+  .block-wrapper {
+    text-align: var(--alignment, center);
+  }
+
+  .text-left {
+    --alignment: left;
+  }
+
+  .text-center {
+    --alignment: center;
+  }
+
+  .text-right {
+    --alignment: right;
+  }
+
+  .custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .block-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+{% endstylesheet %}
+
+<div class="block-wrapper text-{{ block.settings.alignment }}">
+
+  <h1> Block image</h1>
+{% assign img = block.settings.image %}
+
+{% if img != blank %}
+  <img 
+    src="{{ img | image_url: width: 800 }}" 
+    width="800"
+    height="{{ 800 | divided_by: img.aspect_ratio | round }}"
+    alt="{{ img.alt | escape }}" 
+    class="block-image"
+  >
+{% endif %}
+
+ 
+</div>
+
+{% schema %}
+{
+  "name": "Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Click me"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image"
+    }
+  ]
+}
+{% endschema %}

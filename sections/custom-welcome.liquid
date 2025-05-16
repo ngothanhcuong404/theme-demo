@@ -1,0 +1,24 @@
+{% schema %}
+{
+  "name": "Khối Chào Mừng",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "welcome_message",
+      "label": "Thông điệp chào mừng",
+      "default": "🔔 Xin chào! Đây là cửa hàng demo Shopify đc sửa."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Khối chào mừng demo"
+    }
+  ]
+}
+{% endschema %}
+
+<div style="background-color: #f0f8ff; padding: 30px; text-align: center; border-radius: 8px;">
+  <h2 style="color: #007acc;">{{ section.settings.welcome_message }}</h2>
+</div>

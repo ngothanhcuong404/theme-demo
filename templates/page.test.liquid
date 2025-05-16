@@ -1,0 +1,117 @@
+{% comment %} {% layout none %} {% endcomment %}
+{% layout 'full-width' %}
+{% style %}
+  .red {
+    background-color: red;
+    color: white;
+    padding: 10px;
+  }
+    .blue {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+  }
+    .green {
+    background-color: green;
+    color: white;
+    padding: 10px;
+  }
+  
+{% endstyle %}
+
+<h2>Gán Biến bằng assign </h2>
+{% assign ten = "Cường" %}
+<p>Xin chào {{ ten }}</p>
+<h2>Gán Biến bằng assign và tính toán </h2>
+{% assign a = 10 %}
+{% assign b = 5 %}
+{% assign tong = a | plus: b %}
+<p>{{ a }} + {{ b }} = {{ tong }}</p>
+<h2>Chuỗi và filter</h2>
+{% assign chuoi = "xin chào thế giới" %}
+<p>{{ chuoi | upcase }}</p>
+<p>{{ chuoi | replace: "thế giới", "mọi người" }}</p>
+<h2>Tạo danh sách và lặp</h2>
+{% assign danh_sach = "Táo,Chuối,Nho" | split: "," %}
+
+<ul>
+  {% for trai_cay in danh_sach %}
+    <li>{{ trai_cay }}</li>
+  {% endfor %}
+</ul>
+<h2>Dùng if, elsif, else gán biến = 8 tính trung bình </h2>
+{% assign diem = 8 %}
+
+{% if diem >= 9 %}
+  <p>Xuất sắc</p>
+{% elsif diem >= 7 %}
+  <p>Khá</p>
+{% else %}
+  <p>Trung bình</p>
+{% endif %}
+
+<h2>Dùng capture để gom HTML</h2>
+{% capture thong_bao %}
+  <strong>Thông báo:</strong> Bạn đã đăng nhập thành công.
+{% endcapture %}
+
+<div>{{ thong_bao }}</div>
+
+
+<h2>Dùng case thay cho if</h2>
+{% assign loai = "vip" %}
+
+{% case loai %}
+  {% when "thuong" %}
+    <p>Khách hàng thường</p>
+  {% when "vip" %}
+    <p>Khách hàng VIP</p>
+  {% else %}
+    <p>Không rõ loại</p>
+{% endcase %}
+<h2>Đếm số phần tử</h2>
+{% assign ds = "A,B,C,D,E" | split: "," %}
+<p>Có tổng cộng {{ ds.size }} phần tử.</p>
+{% assign ds = "HTML,CSS,JS" | split: "," %}
+<h2> Lặp có index</h2>
+<ol>
+  {% for item in ds %}
+    <li>{{ forloop.index }} - {{ item }}</li>
+  {% endfor %}
+</ol>
+
+<h2> table row </h2>
+<table>
+  {% tablerow ds in danh_sach %}
+    {{ ds }}
+  {% endtablerow %}
+</table>
+
+{% # this is a comment %}
+{% comment %}
+  Đây là ghi chú không hiển thị
+{% endcomment %}
+<h2>raw </h2>
+{% raw %}
+  {{ name }}
+{% endraw %}
+<h2>cycle </h2>
+{% for i in (1..4) %}
+  <div class="{% cycle 'red', 'green', 'blue' %}">Hàng {{ i }}</div>
+{% endfor %}
+<h2>break </h2>
+{% for i in (1..10) %}
+  {% if i == 4 %}
+    {% break %}
+  {% endif %}
+  <p>{{ i }}</p>
+{% endfor %}
+<h2>continue </h2>
+{% for i in (1..5) %}
+  {% if i == 3 %}
+    {% continue %}
+  {% endif %}
+  <p>{{ i }}</p>
+{% endfor %}
+<h2>render </h2>
+{% render 'button', text: "Mua ngay" %}

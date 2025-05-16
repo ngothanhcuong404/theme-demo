@@ -1,0 +1,30 @@
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [],
+    "blocks": [
+   {
+     "type": "@theme"
+   },
+      {
+        "type": "@app"
+      },
+      {
+        "type": "_image"
+      }
+    ]
+    
+  }
+{% endschema %}
+<div class="custom-demo">
+  <section class="hero" style="padding: 60px; background: #f3f4f6; text-align: center;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Chào mừng đến với trang demo</h1>
+    <p style="font-size: 1.2rem;">Đây là trang được tạo bằng JSON Template và Liquid Section.</p>
+  </section>
+
+  <section class="about" style="padding: 40px; text-align: center;">
+    <h2>Giới thiệu nhanh</h2>
+    <p>Toàn bộ nội dung trang này được kiểm soát hoàn toàn bằng code, không cần kéo-thả.</p>
+     {% content_for 'blocks' %} 
+  </section>
+</div>
