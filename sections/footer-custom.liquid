@@ -10,6 +10,15 @@
 }
 {% endschema %}
 
+
+{% if product and product.title and product.price and product.description %}
+  <h1> title: {{ product.title }}</h1>
+  <p>Giá: {{ product.price | money }}</p>
+  <p>Giá cao nhất: {{ product.compare_at_price_max | money }}</p>
+  <p>Giá thấp nhất: {{ product.compare_at_price_min | money }}</p>
+ 
+{% endif %}
+
 <footer class="custom-footer">
   <p>© {{ 'now' | date: '%Y' }} Cửa hàng của tôi.</p>
 </footer>

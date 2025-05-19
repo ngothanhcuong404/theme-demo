@@ -1,0 +1,58 @@
+
+<h2>Object shop</h2>
+<h1>Chào mừng đến với cửa hàng: {{ shop.name }}</h1>
+<p>Loại tiền tệ: {{ shop.currency }}</p>
+<p>Email hỗ trợ: {{ shop.email }}</p>
+<p>id : {{ shop.id }}</p>
+<p>Đường dẫn: {{ shop.url }}</p>
+<hr>
+<h2>Object cart</h2>
+<p>Số lượng sản phẩm: {{ cart.item_count }}</p>
+<p>Tổng tiền: {{ cart.total_price | money }}</p>
+
+<hr>
+
+
+<h2>Object collections</h2>
+<ul>
+  {% for collection in collections %}
+    <li> collection title: {{ collection.title }}</li>
+    <li> collection id: {{ collection.id }}</li>
+    <li> collection handle: {{ collection.handle }}</li>
+    <li> collection url: {{ collection.url }}</li>
+    <li> collection image: {{ collection.image | img_url: 'medium' }}</li>
+
+  {% else %}
+    <li>Không có bộ sưu tập nào.</li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+
+<h2>Object Page </h2>
+<p>Đường dẫn: {{ page.url }}</p>
+<p>Tiêu đề: {{ page.title }}</p>
+<p>Ngày đăng: {{ page.published_at }}</p>
+
+<hr>
+
+
+<h2>Object Request</h2>
+<p>Đường dẫn hiện tại: {{ request.path }}</p>
+<p>Ngôn ngữ (Locale): {{ request.locale.iso_code }}</p>
+
+<hr>
+
+<!-- ====== ROUTES OBJECT ====== -->
+<h2>object routes</h2>
+<p><a href="{{ routes.cart_url }}">Xem giỏ hàng</a></p>
+<p><a href="{{ routes.account_login_url }}">Đăng nhập</a></p>
+<p><a href="{{ routes.search_url }}">Tìm kiếm</a></p>
+<p><a href="{{ routes.all_products_collection_url }}">Tất cả sản phẩm</a></p>
+<p><a href="{{ routes.root_url }}">Trang chủ</a></p>
+
+
+
+<hr>
+
